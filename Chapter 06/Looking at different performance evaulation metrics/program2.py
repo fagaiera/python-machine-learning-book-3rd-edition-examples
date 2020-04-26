@@ -6,7 +6,6 @@ from sklearn.svm import SVC
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import LabelEncoder
 from sklearn.preprocessing import StandardScaler
-
 import pandas as pd
 
 df = pd.read_csv('wdbc.data', header=None)
