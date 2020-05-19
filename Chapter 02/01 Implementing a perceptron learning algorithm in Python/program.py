@@ -1,11 +1,21 @@
 from perceptron import Perceptron
+from matplotlib.colors import ListedColormap
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
-from matplotlib.colors import ListedColormap
 
-"""Read the data frame"""
-df = pd.read_csv('iris.data', header=None)
+v1 = np.array([1, 2, 3])
+v2 = 0.5 * v1
+np.arccos(v1.dot(v2) / (np.linalg.norm(v1) * np.linalg.norm(v2)))
+
+# Training a perceptron model on the Iris dataset
+
+# Reading-in the Iris data
+
+df = pd.read_csv('iris.data', header=None, encoding='utf-8')
+df.tail()
+
+# Plotting the Iris data
 
 # select setosa and versicolor
 y = df.iloc[0:100, 4].values
@@ -14,9 +24,32 @@ y = np.where(y == 'Iris-setosa', -1, 1)
 # extract sepal length and petal length
 X = df.iloc[0:100, [0, 2]].values
 
+# plot data
+plt.scatter(X[:50, 0], X[:50, 1],
+            color='red', marker='o', label='setosa')
+plt.scatter(X[50:100, 0], X[50:100, 1],
+            color='blue', marker='x', label='versicolor')
+
+plt.xlabel('sepal length [cm]')
+plt.ylabel('petal length [cm]')
+plt.legend(loc='upper left')
+plt.show()
+
+
+
+# Training the perceptron model
 ppn = Perceptron(eta=0.1, n_iter=10)
+
 ppn.fit(X, y)
 
+plt.plot(range(1, len(ppn.errors_) + 1), ppn.errors_, marker='o')
+plt.xlabel('Epochs')
+plt.ylabel('Number of updates')
+plt.show()
+
+
+
+# A function for plotting decision regions
 def plot_decision_regions(X, y, classifier, resolution=0.02):
 
     # setup marker generator and color map
@@ -46,8 +79,6 @@ def plot_decision_regions(X, y, classifier, resolution=0.02):
                     edgecolor='black')
 
 plot_decision_regions(X, y, classifier=ppn)
-
-
 plt.xlabel('sepal length [cm]')
 plt.ylabel('petal length [cm]')
 plt.legend(loc='upper left')
