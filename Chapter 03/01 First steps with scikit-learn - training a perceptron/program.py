@@ -8,7 +8,9 @@ from matplotlib.colors import ListedColormap
 import matplotlib.pyplot as plt
 import numpy as np
 
-# Loading the Iris dataset from scikit-learn. Here, the third column represents the petal length, and the fourth column the petal width of the flower examples. The classes are already converted to integer labels where 0=Iris-Setosa, 1=Iris-Versicolor, 2=Iris-Virginica.
+# Loading the Iris dataset from scikit-learn. Here, the third column represents the petal length, and the fourth column the petal width of the flower examples. 
+# The classes are already converted to integer labels where 
+# 0=Iris-Setosa, 1=Iris-Versicolor, 2=Iris-Virginica.
 iris = datasets.load_iris()
 X = iris.data[:, [2, 3]]
 y = iris.target
@@ -87,6 +89,5 @@ plot_decision_regions(X=X_combined_std, y=y_combined,
 plt.xlabel('petal length [standardized]')
 plt.ylabel('petal width [standardized]')
 plt.legend(loc='upper left')
-
 plt.tight_layout()
 plt.show()
