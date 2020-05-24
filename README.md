@@ -1,1 +1,1 @@
-# Examples of Python Machine Learning Book
+# Examples of Python Machine Learning book
