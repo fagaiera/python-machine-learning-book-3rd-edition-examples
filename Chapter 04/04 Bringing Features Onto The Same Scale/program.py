@@ -26,3 +26,13 @@ stdsc = StandardScaler()
 X_train_std = stdsc.fit_transform(X_train)
 X_test_std = stdsc.transform(X_test)
 
+ex = np.array([0, 1, 2, 3, 4, 5])
+
+print('standardized:', (ex - ex.mean()) / ex.std())
+
+# Please note that pandas uses ddof=1 (sample standard deviation) 
+# by default, whereas NumPy's std method and the StandardScaler
+# uses ddof=0 (population standard deviation)
+
+# normalize
+print('normalized:', (ex - ex.min()) / (ex.max() - ex.min()))
