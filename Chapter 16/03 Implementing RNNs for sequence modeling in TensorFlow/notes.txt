@@ -1,0 +1,9 @@
+You can mount your Google Drive files by running the following code snippet in your Python code:
+
+from google.colab import drive
+drive.mount('/content/drive')
+
+Reading and processing text
+
+with open('/content/drive/My Drive/Colab Notebooks/1268-0.txt', 'r') as fp:
+    text=fp.read()
